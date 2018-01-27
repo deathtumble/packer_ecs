@@ -1,0 +1,65 @@
+{
+  "variables": {
+    "aws_access_key_id": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_access_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
+    "ssh_private_key": "{{env `SSH_PRIVATE_KEY_FILE`}}",
+    "time_zone": "{{env `TIME_ZONE`}}"
+  },
+  "builders": [
+    {
+      "name": "docker-production-aws-ecs-base",
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key_id`}}",
+      "secret_key": "{{user `aws_secret_access_key`}}",
+      "region": "eu-west-1",
+      "vpc_id": "vpc-3515f853",
+      "subnet_id": "subnet-44cec623",
+      "source_ami": "ami-1d46df64", 
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ssh_timeout": "10m",      
+      "associate_public_ip_address": "true",
+      "ami_name": "docker-production-aws-ecs-base {{timestamp}}",
+      "ssh_keypair_name": "poc",
+      "ssh_private_key_file": "{{user `ssh_private_key`}}",
+      
+      "tags": {
+        "Name": "Docker Production AWS ECS Base Image",
+        "SourceAMI": "ami-7a187c03",
+        "DockerVersion": "17.09.1-ce",
+        "ECSAgentVersion": "1.16.2"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/cloud_init.sh"
+    },
+    {
+      "type": "shell",
+      "inline": ["mkdir /home/ec2-user/files"]
+    },
+    {
+      "type": "file",
+      "source": "files/",
+      "destination": "/home/ec2-user/files"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/goss_setup.sh"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/cleanup.sh"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }
+  ]
+}
