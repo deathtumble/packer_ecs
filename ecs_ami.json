@@ -15,7 +15,7 @@
       "region": "eu-west-1",
       "vpc_id": "vpc-3515f853",
       "subnet_id": "subnet-44cec623",
-      "source_ami": "ami-1d46df64", 
+      "source_ami": "ami-0693ed7f", 
       "instance_type": "t2.micro",
       "ssh_username": "ec2-user",
       "ssh_timeout": "10m",      
@@ -26,7 +26,7 @@
       
       "tags": {
         "Name": "Docker Production AWS ECS Base Image",
-        "SourceAMI": "ami-7a187c03",
+        "SourceAMI": "ami-0693ed7f",
         "DockerVersion": "17.09.1-ce",
         "ECSAgentVersion": "1.16.2"
       }
