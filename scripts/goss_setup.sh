@@ -2,6 +2,7 @@
 set -e
 
 sudo mkdir /etc/goss
+sudo mkdir /etc/config
 
 sudo mv /home/ec2-user/files/bin/goss /usr/local/bin/goss
 sudo chmod +x /usr/local/bin/goss
