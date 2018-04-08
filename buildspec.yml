@@ -8,9 +8,7 @@ phases:
       - apt-cache search source
       - apt-get install -y curl jq
       - wget https://releases.hashicorp.com/terraform/0.11.6/terraform_0.11.6_linux_amd64.zip
-      - rm terraform -rf
-      - unzip terraform_0.11.6_linux_amd64.zip
-      - sudo mv terraform /bin
+      - unzip terraform_0.11.6_linux_amd64.zip -d /bin
       - terraform --version
       - rm terraform_0.11.6_linux_amd64.zip
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip && unzip packer.zip
