@@ -20,7 +20,7 @@ phases:
       - pushd terraform
       - terraform refresh
       - terraform apply -auto-approve  
-      - terraform output -json | jq '{ subnet_id: .subnet_id.value, vpc_id: .vpc_id.value }' > ../terraform.json
+      - "terraform output -json | jq '{ subnet_id: .subnet_id.value, vpc_id: .vpc_id.value }' > ../terraform.json"
       - popd
       - packer build -var-file=terraform.json ecs_ami.json 
       - pushd terraform
