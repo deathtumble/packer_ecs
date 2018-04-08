@@ -2,6 +2,14 @@ provider "aws" {
   region = "${var.region}"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "terraform.backend.urbanfortress.uk"
+    key    = "packer/ecs"
+    region = "${var.region}"
+  }
+}
+
 variable "cidr" {
     default = "10.1.0.0/16"
 }
@@ -81,4 +89,5 @@ resource "aws_subnet" "packer" {
     Name = "packer"
   }
 }
+
 
