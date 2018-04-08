@@ -27,7 +27,7 @@ phases:
       - cd ..
   build:
     commands:
-      - packer build -var-file=terraform.json var 'AWS_ACCESS_KEY_ID=$aws_access_key' var 'AWS_SECRET_ACCESS_KEY=$aws_secret_key' ecs_ami.json
+      - packer build -var-file=terraform.json -var 'AWS_ACCESS_KEY_ID=$aws_access_key' -var 'AWS_SECRET_ACCESS_KEY=$aws_secret_key' ecs_ami.json
   post_build:
     commands:
       - cd terraform
