@@ -11,8 +11,8 @@ phases:
       - unzip terraform_0.11.6_linux_amd64.zip -d /bin
       - terraform --version
       - rm terraform_0.11.6_linux_amd64.zip
-      - curl -qL -o packer.zip https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip && unzip packer.zip
-      - ls
+      - curl -qL -o packer.zip https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip
+      - unzip packer.zip -d /bin
   build:
     commands:
       - cd terraform
@@ -22,6 +22,9 @@ phases:
       - "terraform output -json | jq '{ subnet_id: .subnet_id.value, vpc_id: .vpc_id.value }' > ../terraform.json"
       - cd ..
       - packer build -var-file=terraform.json ecs_ami.json 
+  post_build:
+    commands:
       - cd terraform
       - terraform destroy -force  
       - cd ..
+      

@@ -1,11 +1,6 @@
 {
   "variables": {
-    "aws_access_key_id": "{{env `AWS_ACCESS_KEY_ID`}}",
-    "aws_secret_access_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-    "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
-    "ssh_private_key": "{{env `SSH_PRIVATE_KEY_FILE`}}",
-
-    "time_zone": "{{env `TIME_ZONE`}}",
+    "time_zone": "UTC",
 
     "vpc_id": "{{env `vpc_id`}}",
     "subnet_id": "{{env `subnet_id`}}",
@@ -18,8 +13,6 @@
     {
       "name": "docker-production-aws-ecs-base",
       "type": "amazon-ebs",
-      "access_key": "{{user `aws_access_key_id`}}",
-      "secret_key": "{{user `aws_secret_access_key`}}",
       "region": "eu-west-1",
 
       "vpc_id": "{{user `vpc_id`}}",
@@ -31,8 +24,6 @@
       "ssh_timeout": "10m",      
       "associate_public_ip_address": "true",
       "ami_name": "docker-production-aws-ecs-base {{timestamp}} {{user `source_ami`}}",
-      "ssh_keypair_name": "poc",
-      "ssh_private_key_file": "{{user `ssh_private_key`}}",
       
       "tags": {
         "Name": "Docker Production AWS ECS Base Image {{timestamp}} {{user `source_ami`}}",
