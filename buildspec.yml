@@ -4,6 +4,7 @@ env:
   parameter-store:
     aws_access_key: "/CodeBuild/packer/AWS_ACCESS_KEY_ID"
     aws_secret_key: "/CodeBuild/packer/AWS_SECRET_ACCESS_KEY" 
+
 phases:
   install:
     commands:
