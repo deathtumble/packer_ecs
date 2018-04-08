@@ -7,7 +7,6 @@ phases:
       - apt-get update
       - apt-cache search source
       - apt-get install -y curl jq
-      - echo $PATH
       - wget https://releases.hashicorp.com/terraform/0.11.6/terraform_0.11.6_linux_amd64.zip
       - rm terraform -rf
       - unzip terraform_0.11.6_linux_amd64.zip
@@ -17,12 +16,12 @@ phases:
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip && unzip packer.zip
   build:
     commands:
-      - pushd terraform
+      - cd terraform
       - terraform refresh
       - terraform apply -auto-approve  
       - "terraform output -json | jq '{ subnet_id: .subnet_id.value, vpc_id: .vpc_id.value }' > ../terraform.json"
-      - popd
+      - cd ..
       - packer build -var-file=terraform.json ecs_ami.json 
-      - pushd terraform
+      - cd terraform
       - terraform destroy -force  
-      - popd
+      - cd ..
