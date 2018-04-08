@@ -14,6 +14,7 @@ phases:
       - terraform --version
       - rm terraform_0.11.6_linux_amd64.zip
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip && unzip packer.zip
+      - ls
   build:
     commands:
       - cd terraform
