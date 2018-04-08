@@ -12,11 +12,17 @@ phases:
       - rm terraform -rf
       - unzip terraform_0.11.6_linux_amd64.zip
       - sudo mv terraform /bin
+      - terraform --version
       - rm terraform_0.11.6_linux_amd64.zip
-      - apt-get update
-      - apt-cache search source
-      - apt-get install -y curl jq
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip && unzip packer.zip
   build:
     commands:
-      - ./ci/build.sh
+      - pushd terraform
+      - terraform refresh
+      - terraform apply -auto-approve  
+      - terraform output -json | jq '{ subnet_id: .subnet_id.value, vpc_id: .vpc_id.value }' > ../terraform.json
+      - popd
+      - packer build -var-file=terraform.json ecs_ami.json 
+      - pushd terraform
+      - terraform destroy -force  
+      - popd
