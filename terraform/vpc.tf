@@ -6,7 +6,7 @@ terraform {
   backend "s3" {
     bucket = "terraform.backend.urbanfortress.uk"
     key    = "packer/ecs"
-    region = "eu-west-1c"
+    region = "eu-west-1"
   }
 }
 
