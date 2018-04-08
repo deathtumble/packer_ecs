@@ -1,0 +1,6 @@
+---
+platform: linux
+
+run:
+  path: packer-ecs/ci/build.sh
+  dir: packer-ecs

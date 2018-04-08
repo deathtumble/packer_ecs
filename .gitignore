@@ -1,3 +1,5 @@
 /.project
 /setenv.sh
 /manifest.json
+/terraform.json
+/terraform.tfstate
