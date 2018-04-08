@@ -1,9 +1,15 @@
 version: 0.2
 
 phases:
-  install:
+  install-misc:
     commands:
       - sudo pip install boto3
+      - apt-get update
+      - apt-cache search source
+      - apt-get install -y curl jq
+      - echo $PATH
+  install-terraform:
+    commands:
       - wget https://releases.hashicorp.com/terraform/0.11.6/terraform_0.11.6_linux_amd64.zip
       - rm terraform -rf
       - unzip terraform_0.11.6_linux_amd64.zip
@@ -12,7 +18,8 @@ phases:
       - apt-get update
       - apt-cache search source
       - apt-get install -y curl jq
-      - echo "Installing HashiCorp Packer..."
+  install-packer:
+    commands:
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip && unzip packer.zip
   build:
     commands:
