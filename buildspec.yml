@@ -16,6 +16,7 @@ phases:
       - unzip terraform_0.11.6_linux_amd64.zip -d /bin
       - rm terraform_0.11.6_linux_amd64.zip
       - curl -qL -o packer.zip https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip
+      - unzip packer.zip -d /bin
   pre_build:
     commands:
       - cd terraform
@@ -27,7 +28,6 @@ phases:
   build:
     commands:
       - packer build -var-file=terraform.json -color=false -var "aws_access_key_id=$aws_access_key_id" -var "aws_secret_access_key=$aws_secret_access_key" ecs_ami.json
-      - zip manifest.zip manifest.json
   post_build:
     commands:
       - cd terraform
