@@ -14,6 +14,7 @@ phases:
       - terraform apply -auto-approve -no-color  
       - "terraform output -json | jq '{ subnet_id: .subnet_id.value, vpc_id: .vpc_id.value }' > ../terraform.json"
       - cd ..
+      - echo $aws_access_key_id
   build:
     commands:
       - packer build -var-file=terraform.json -color=false -var "aws_access_key_id=$aws_access_key_id" -var "aws_secret_access_key=$aws_secret_access_key" ecs_ami.json
