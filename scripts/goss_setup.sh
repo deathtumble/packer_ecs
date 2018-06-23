@@ -11,3 +11,4 @@ sudo mv /home/ec2-user/files/config/goss.yaml /etc/goss/goss.yaml
 
 sudo mv /home/ec2-user/files/init.d/goss /etc/init.d/goss 
 sudo chmod +x /etc/init.d/goss
+sudo chown root:root /etc/init.d/goss
