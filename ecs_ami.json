@@ -62,6 +62,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/modd_setup.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/cleanup.sh"
     }
   ],
