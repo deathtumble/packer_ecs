@@ -1,13 +1,15 @@
 #!/bin/bash
+#
+# /etc/init.d/goss
+#
 # chkconfig: 2345 13 87
 #
-#       /etc/rc.d/init.d/
 #
 #
 #
 #
 #
-
+#
 
 RUNAS=root
 

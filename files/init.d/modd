@@ -1,7 +1,9 @@
 #!/bin/bash
-# chkconfig: 2345 13 87
 #
-#       /etc/rc.d/init.d/
+# /etc/init.d/modd
+#
+# chkconfig: 2345 14 86
+#
 #
 #
 #
@@ -13,7 +15,7 @@ RUNAS=root
 
 PIDFILE=/var/run/modd.pid
 LOGFILE=/var/log/modd.log
-CONFIGFILE=/etc/goss/modd.conf
+CONFIGFILE=/etc/modd/modd.conf
 EXECFILE=/usr/local/bin/modd
 
 start() {
@@ -22,7 +24,7 @@ start() {
         return 1
     fi
     echo 'Starting service…' >&2
-    local CMD="$EXECFILE  -g $CONFIGFILE serve -listen-addr=0.0.0.0:8082 &> \"$LOGFILE\" & echo \$!"
+    local CMD="$EXECFILE -f $CONFIGFILE &> \"$LOGFILE\" & echo \$!"
     echo $CMD
     su -c "$CMD" $RUNAS > "$PIDFILE"
     echo 'Service started' >&2
