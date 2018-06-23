@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-sudo mkdir /etc/modd
-sudo mkdir /etc/config
+sudo mkdir -p /etc/modd
+sudo mkdir -p /etc/config
 
 sudo mv /home/ec2-user/files/bin/modd /usr/local/bin/modd
 sudo chmod +x /usr/local/bin/modd
