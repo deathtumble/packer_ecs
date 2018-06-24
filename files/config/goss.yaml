@@ -1,2 +1,2 @@
 gossfile:
-  /etc/goss/goss-*.yaml: {}
+  /etc/goss/*-goss.yaml: {}
