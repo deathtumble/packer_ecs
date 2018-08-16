@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# /etc/init.d/consul
+#
+# chkconfig: 2345 13 87
+#
+
+RUNAS=root
+
+PIDFILE=/var/run/consul.pid
+LOGFILE=/var/log/consul.log
+EXECFILE=/usr/local/bin/consul
+
+CONSUL_BIND_INTERFACE=eth0
+CONSUL_BIND_ADDRESS=$(ip -o -4 addr list $CONSUL_BIND_INTERFACE | head -n1 | awk '{print $4}' | cut -d/ -f1)
+CONSUL_CLIENT_INTERFACE=lo
+CONSUL_CLIENT_ADDRESS=$(ip -o -4 addr list $CONSUL_CLIENT_INTERFACE | head -n1 | awk '{print $4}' | cut -d/ -f1)
+
+CONSUL_DATA_DIR=/consul/data
+CONSUL_CONF_DIR=/etc/consul
+source $CONSUL_CONF_DIR/setenv.sh
+
+start() {
+    if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
+        echo 'Service already running' >&2
+        return 1
+    fi
+    echo 'Starting service…' >&2
+    local CMD="$EXECFILE agent -dns-port=53 -recursor=$RECURSOR -retry-join 'provider=aws tag_key=ConsulCluster tag_value=$CONSUL_CLUSTER region=$REGION' -bind=$CONSUL_BIND_ADDRESS -client=$CONSUL_CLIENT_ADDRESS -data-dir=$CONSUL_DATA_DIR -config-dir=$CONSUL_CONF_DIR &> \"$LOGFILE\" & echo \$!"
+    echo $CMD
+    su -c "$CMD" $RUNAS > "$PIDFILE"
+    echo 'Service started' >&2
+}
+
+stop() {
+    if [ ! -f "$PIDFILE" ] || ! kill -0 $(cat "$PIDFILE"); then
+        echo 'Service not running' >&2
+        return 1
+    fi
+    echo 'Stopping service…' >&2
+    kill -15 $(cat "$PIDFILE") && rm -f "$PIDFILE"
+    echo 'Service stopped' >&2
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage:  {start|stop|status|reload}"
+        exit 1
+        ;;
+esac
+exit $?

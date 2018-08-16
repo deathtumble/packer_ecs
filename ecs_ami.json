@@ -58,6 +58,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/consul_setup.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/goss_setup.sh"
     },
     {
