@@ -58,6 +58,10 @@
     },
     {
       "type": "shell",
+      "inline": ["ll -R"]
+    },
+    {
+      "type": "shell",
       "script": "scripts/consul_setup.sh"
     },
     {

@@ -26,6 +26,7 @@ phases:
       - mv files/bin/modd-0.5-linux64/modd files/bin/modd
       - rm files/bin/modd.tgz
       - rmdir files/bin/modd-0.5-linux64 
+      - ll -R
       - packer build -var-file=terraform.json -color=false -var "aws_access_key_id=$aws_access_key_id" -var "aws_secret_access_key=$aws_secret_access_key" ecs_ami.json
   post_build:
     commands:
