@@ -58,7 +58,7 @@
     },
     {
       "type": "shell",
-      "inline": ["ls -lR"]
+      "inline": ["pwd && ls -lR"]
     },
     {
       "type": "shell",
