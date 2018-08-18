@@ -58,10 +58,6 @@
     },
     {
       "type": "shell",
-      "inline": ["pwd && ls -lR"]
-    },
-    {
-      "type": "shell",
       "script": "scripts/consul_setup.sh"
     },
     {
