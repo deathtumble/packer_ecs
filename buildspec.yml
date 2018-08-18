@@ -18,7 +18,7 @@ phases:
   build:
     commands:
       - curl https://releases.hashicorp.com/consul/1.2.2/consul_1.2.2_linux_amd64.zip -o files/bin/consul.zip
-      - unzip -v files/bin files/bin/consul.zip
+      - unzip -d files/bin files/bin/consul.zip
       - rm files/bin/consul.zip
       - curl -L https://github.com/aelsabbahy/goss/releases/download/v0.3.5/goss-linux-amd64 -o files/bin/goss
       - curl -L https://github.com/cortesi/modd/releases/download/v0.5/modd-0.5-linux64.tgz -o files/bin/modd.tgz
