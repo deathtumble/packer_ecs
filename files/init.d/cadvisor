@@ -1,15 +1,11 @@
 #!/bin/bash
 #
-# /etc/init.d/cadvisor
+# cadvisor
 #
 # chkconfig: 2345 13 87
 #
-#
-#
-#
-#
-#
-#
+# processname: cadvisor
+# pidfile: /var/run/cadvisor.pid
 
 RUNAS=root
 

@@ -16,6 +16,18 @@ service:
   sshd:
     enabled: true
     running: true
+  goss:
+    enabled: true
+    running: true
+  modd:
+    enabled: true
+    running: true
+  consul:
+    enabled: true
+    running: true
+  cadvisor:
+    enabled: true
+    running: true
 group:
   sshd:
     exists: true
@@ -23,3 +35,8 @@ group:
 process:
   sshd:
     running: true
+http:
+  http://localhost:8080/metrics:
+    status: 200
+    timeout: 1000
+    allow-insecure: false

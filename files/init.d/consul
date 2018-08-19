@@ -1,9 +1,11 @@
 #!/bin/bash
 #
-# /etc/init.d/consul
+# consul
 #
 # chkconfig: 2345 13 87
 #
+# processname: consul
+# pidfile: /var/run/consul.pid
 
 RUNAS=root
 

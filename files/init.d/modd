@@ -1,15 +1,11 @@
 #!/bin/bash
 #
-# /etc/init.d/modd
+# 
 #
 # chkconfig: 2345 14 86
 #
-#
-#
-#
-#
-#
-
+# processname: modd
+# pidfile: /var/run/modd.pid
 
 RUNAS=root
 

@@ -1,15 +1,11 @@
 #!/bin/bash
 #
-# /etc/init.d/goss
+# goss
 #
 # chkconfig: 2345 13 87
 #
-#
-#
-#
-#
-#
-#
+# processname: goss
+# pidfile: /var/run/goss.pid
 
 RUNAS=root
 
@@ -24,7 +20,7 @@ start() {
         return 1
     fi
     echo 'Starting service…' >&2
-    local CMD="$EXECFILE  -g $CONFIGFILE serve --format junit -listen-addr=0.0.0.0:8082 &> \"$LOGFILE\" & echo \$!"
+    local CMD="$EXECFILE  -g $CONFIGFILE serve -listen-addr=0.0.0.0:8082 &> \"$LOGFILE\" & echo \$!"
     echo $CMD
     su -c "$CMD" $RUNAS > "$PIDFILE"
     echo 'Service started' >&2
