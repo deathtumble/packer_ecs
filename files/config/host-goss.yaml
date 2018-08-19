@@ -88,7 +88,3 @@ http:
     status: 200
     timeout: 1000
     allow-insecure: false
-  http://localhost:8500:
-    status: 200
-    timeout: 1000
-    allow-insecure: false    
