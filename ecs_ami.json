@@ -70,6 +70,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/cadvisor_setup.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/cleanup.sh"
     }
   ],

@@ -20,12 +20,17 @@ phases:
       - curl https://releases.hashicorp.com/consul/1.2.2/consul_1.2.2_linux_amd64.zip -o files/bin/consul.zip
       - unzip -d files/bin files/bin/consul.zip
       - rm files/bin/consul.zip
+      -
       - curl -L https://github.com/aelsabbahy/goss/releases/download/v0.3.5/goss-linux-amd64 -o files/bin/goss
+      -
       - curl -L https://github.com/cortesi/modd/releases/download/v0.5/modd-0.5-linux64.tgz -o files/bin/modd.tgz
       - tar -xvzf files/bin/modd.tgz -C files/bin
       - mv files/bin/modd-0.5-linux64/modd files/bin/modd
       - rm files/bin/modd.tgz
       - rmdir files/bin/modd-0.5-linux64 
+      -
+      - curl -L https://github.com/google/cadvisor/releases/download/untagged-ea64a390962dd82b3913/cadvisor -o files/bin/cadvisor
+      -
       - packer build -var-file=terraform.json -color=false -var "aws_access_key_id=$aws_access_key_id" -var "aws_secret_access_key=$aws_secret_access_key" ecs_ami.json
   post_build:
     commands:
