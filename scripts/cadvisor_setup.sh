@@ -10,3 +10,6 @@ sudo chown root:root /usr/local/bin/cadvisor
 sudo mv /home/ec2-user/files/init.d/cadvisor /etc/init.d/cadvisor 
 sudo chmod +x /etc/init.d/cadvisor
 sudo chown root:root /etc/init.d/cadvisor
+
+sudo chkconfig cadvisor on
+sudo service cadvisor start

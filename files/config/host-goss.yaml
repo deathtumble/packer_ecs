@@ -12,6 +12,45 @@ port:
     listening: true
     ip:
     - '::'
+  tcp:8301:
+    listening: true
+file:
+  /usr/local/bin/consul:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: file
+  /usr/local/bin/goss:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: file
+  /usr/local/bin/modd:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root 
+    filetype: file
+  /usr/local/bin/cadvisor:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: file  
+  /etc/modd/modd.conf:
+    exists: true
+    mode: "0664"
+    owner: root
+    group: root
+    filetype: file  
+  /etc/init.d/modd:
+    exists: true
+    mode: "0775"
+    owner: root
+    group: root
+    filetype: file
 service:
   sshd:
     enabled: true
@@ -20,9 +59,6 @@ service:
     enabled: true
     running: true
   modd:
-    enabled: true
-    running: true
-  consul:
     enabled: true
     running: true
   cadvisor:
@@ -35,8 +71,24 @@ group:
 process:
   sshd:
     running: true
+  consul:
+    running: true
+  goss:
+    running: true
+  modd:
+    running: true
+  cadvisor:
+    running: true
+  dockerd:
+    running: true
+  crond:
+    running: true
 http:
   http://localhost:8080/metrics:
     status: 200
     timeout: 1000
     allow-insecure: false
+  http://localhost:8500:
+    status: 200
+    timeout: 1000
+    allow-insecure: false    

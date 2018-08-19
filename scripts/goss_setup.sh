@@ -16,3 +16,6 @@ sudo chown root:root /etc/goss/host-goss.yaml
 sudo mv /home/ec2-user/files/init.d/goss /etc/init.d/goss 
 sudo chmod +x /etc/init.d/goss
 sudo chown root:root /etc/init.d/goss
+
+sudo chkconfig goss on
+sudo service goss start
