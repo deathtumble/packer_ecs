@@ -37,8 +37,6 @@ phases:
       - rm files/bin/node_exporter.tar.gz
       - rm -rf files/bin/node_exporter-0.16.0.linux-amd64
        
-      - https://github.com/prometheus/node_exporter/releases/download/v0.16.0/node_exporter-0.16.0.linux-amd64.tar.gz
-      -
       - packer build -var-file=terraform.json -color=false -var "aws_access_key_id=$aws_access_key_id" -var "aws_secret_access_key=$aws_secret_access_key" ecs_ami.json
   post_build:
     commands:
