@@ -1,0 +1,56 @@
+#!/bin/bash
+#
+# node_exporter
+#
+# chkconfig: 2345 13 87
+#
+# processname: node_exporter
+# pidfile: /var/run/node_exporter.pid
+
+RUNAS=root
+
+PIDFILE=/var/run/node_exporter.pid
+LOGFILE=/var/log/node_exporter.log
+EXECFILE=/usr/local/bin/node_exporter
+
+start() {
+    if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
+        echo 'Service already running' >&2
+        return 1
+    fi
+    echo 'Starting service…' >&2
+    local CMD="$EXECFILE &> \"$LOGFILE\" & echo \$!"
+    echo $CMD
+    su -c "$CMD" $RUNAS > "$PIDFILE"
+    echo 'Service started' >&2
+}
+
+stop() {
+    if [ ! -f "$PIDFILE" ] || ! kill -0 $(cat "$PIDFILE"); then
+        echo 'Service not running' >&2
+        return 1
+    fi
+    echo 'Stopping service…' >&2
+    kill -15 $(cat "$PIDFILE") && rm -f "$PIDFILE"
+    echo 'Service stopped' >&2
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage:  {start|stop|status|reload}"
+        exit 1
+        ;;
+esac
+exit $?
