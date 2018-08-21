@@ -70,6 +70,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/node_exporter.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/cadvisor_setup.sh"
     },
     {
