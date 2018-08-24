@@ -12,8 +12,6 @@ port:
     listening: true
     ip:
     - '::'
-  tcp:8301:
-    listening: true
 file:
   /usr/local/bin/consul:
     exists: true
