@@ -19,7 +19,7 @@ start() {
         return 1
     fi
     echo 'Starting service…' >&2
-    local CMD="$EXECFILE &> \"$LOGFILE\" & echo \$!"
+    local CMD="$EXECFILE --port=8090 &> \"$LOGFILE\" & echo \$!"
     echo $CMD
     su -c "$CMD" $RUNAS > "$PIDFILE"
     echo 'Service started' >&2
