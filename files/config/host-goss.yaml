@@ -82,7 +82,7 @@ process:
   crond:
     running: true
 http:
-  http://localhost:8080/metrics:
+  http://localhost:8090/metrics:
     status: 200
     timeout: 1000
     allow-insecure: false
