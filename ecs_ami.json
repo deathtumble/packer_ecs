@@ -82,6 +82,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/dhclient_setup.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/cleanup.sh"
     }
   ],
