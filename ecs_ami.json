@@ -78,6 +78,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/sshconfig_setup.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/cleanup.sh"
     }
   ],
