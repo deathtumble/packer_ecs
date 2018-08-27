@@ -2,4 +2,4 @@
 
 set -e
   
-echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhcp/dhclient.conf
+sudo echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhcp/dhclient.conf
