@@ -50,7 +50,7 @@
     
     {
       "type": "shell",
-      "script": "scripts/cloud_init.sh"
+      "script": "scripts/nfs_client_setup.sh"
     },
     
     {
