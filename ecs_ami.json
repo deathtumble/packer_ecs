@@ -47,6 +47,12 @@
       "type": "shell",
       "script": "scripts/bump-ulimit.sh"
     },
+    
+    {
+      "type": "shell",
+      "script": "scripts/cloud_init.sh"
+    },
+    
     {
       "type": "shell",
       "inline": ["mkdir /home/ec2-user/files"]
