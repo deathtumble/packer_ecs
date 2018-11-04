@@ -8,9 +8,9 @@
     "vpc_id": "{{env `vpc_id`}}",
     "subnet_id": "{{env `subnet_id`}}",
 
-    "source_ami": "ami-0dbcd2533bc72c3f6", 
+    "source_ami": "ami-066826c6a40879d75", 
     "DockerVersion": "18.06.1-ce",
-    "ECSAgentVersion": "1.20.2-1"
+    "ECSAgentVersion": "1.21.0-1"
   },
   "builders": [
     {
