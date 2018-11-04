@@ -92,6 +92,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/bump-vmmaxmapount_setup.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/cleanup.sh"
     }
   ],
