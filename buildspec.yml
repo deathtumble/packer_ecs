@@ -43,8 +43,11 @@ phases:
       - cd terraform
       - terraform destroy -force -no-color 
       - cd ..
+      - AMI=jq '.builds[0].artifact_id | split(":")[1]' -r manifest.json
+      - echo ecs_ami_id = \"$AMI\" > packer.auto.tfvars
 artifacts:
    files:
      - manifest.json
+     - packer.auto.tfvars
    discard-paths: yes       
       
