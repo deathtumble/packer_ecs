@@ -1,0 +1,8 @@
+- type: log
+  paths:
+    - /var/log/goss.log
+  fields:
+    goss: true
+  tags: ["goss"]
+  fields_under_root: true
+  sca_frequency: 3s

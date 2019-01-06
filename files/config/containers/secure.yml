@@ -1,0 +1,8 @@
+- type: log
+  paths:
+    - /var/log/secure.log
+  fields:
+    secure: true
+  tags: ["secure"]
+  fields_under_root: true
+  sca_frequency: 3s

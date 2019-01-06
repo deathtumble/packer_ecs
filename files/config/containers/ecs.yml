@@ -1,0 +1,8 @@
+- type: log 
+  paths:
+    - /var/log/ecs/ecs-init.log
+    - /var/log/ecs/ecs-agent.log.*
+  fields:
+    ecs: true
+  fields_under_root: true
+  sca_frequency: 3s

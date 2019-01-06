@@ -64,6 +64,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/filebeats.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/consul_setup.sh"
     },
     {

@@ -1,0 +1,8 @@
+- type: log
+  paths:
+    - /var/log/yum.log
+  fields:
+    yum: true
+  tags: ["yum"]
+  fields_under_root: true
+  sca_frequency: 3s

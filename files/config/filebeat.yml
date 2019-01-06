@@ -1,0 +1,12 @@
+output.logstash:
+  hosts: ["logstash.service.consul:5044"]
+  
+filebeat.inputs:  
+  type: docker
+  containers.id: 
+  - '*'
+filebeat.config.inputs:
+  enabled: true
+  path: /etc/filebeat/containers/*.yml
+  reload.enabled: true
+  reload.period: 3s
