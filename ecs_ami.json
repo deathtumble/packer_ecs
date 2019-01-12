@@ -64,6 +64,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/monit_setup.sh"
+    },
+    {
+      "type": "shell",
       "script": "scripts/filebeats.sh"
     },
     {
