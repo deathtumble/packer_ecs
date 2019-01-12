@@ -1,0 +1,8 @@
+- type: docker
+  containers.ids: 
+    - '*'
+  fields:
+    docker: true
+  tags: ["docker"]
+  fields_under_root: true
+  scan_frequency: 3s

@@ -2,10 +2,6 @@ output.logstash:
   hosts: ["logstash.service.consul:5044"]
   backoff.max: 6000s
   
-filebeat.inputs:  
-  type: docker
-  containers.id: 
-  - '*'
 filebeat.config.inputs:
   enabled: true
   path: /etc/filebeat/containers/*.yml
