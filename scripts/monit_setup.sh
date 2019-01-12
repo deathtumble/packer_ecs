@@ -7,4 +7,4 @@ sudo mv /home/ec2-user/files/config/monit.conf /etc/monit.conf
 sudo chown root:root /etc/monit.conf
 sudo chmod 600 /etc/monit.conf
 
-sudo sh -c 'echo "mo:2345:respawn:/usr/local/bin/monit -I" >> /etc/inittab'
+sudo sh -c 'echo "mo:2345:respawn:/usr/bin/monit -I" >> /etc/inittab'
